@@ -1,20 +1,31 @@
-# mininote
+# MiniNote
 
-One page note manager.
+## Egyszerű jegyzetkezelő
+
+Fejlesztő: [pphome2](https:/github.com/pphome2)
+
+**Aktuális verzió: 2020.**
+
+**Első megjelenés: 2019.**
+
+A program jegyztelapokat tárol, kategorizálva.
+
+Egyszerű:
+- nem szükséges CMS a működéshez
+- nincs külön felhasználókezelés, két felasználó jelszót tárol a `config` fájlban
+- nem kell telepíteni
+- nem használ SQL adatbázist
+- nem használ cookie-kat
 
 
-MiniNote
+### Telepítés
 
-(C) 2019. pphome2
+- felmásolni az összes fájlt a webserver megfelelő könyvtárába
+- írási jog kell a `data` könyvtárra
+- `config` könyvtár `config.php` fájl átnézése: a beállítások itt taláhatók
+- `config` könyvtárban találhatók a nyelvi fájlok, ha szükséges a módosítható
 
 
-Mini notes manager in one webpage.
+### Működés
 
-Mini:
-- No need CMS, only use it.
-- No user managment, only one passcode in config file.
-- No need install, only copy to folder, and add rights for web users.
-
-All data is stored in the "data" directory.
-All displayed messages are in the "config.php" file, you just 
-have to change it to that language ...
+Csak használd.
