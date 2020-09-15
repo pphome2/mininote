@@ -1,19 +1,20 @@
-# DocMan
+# MiniNote
 
-## Dokimentumkezelő weboldalakhoz
+## Jegyzetkezelő program
 
 Fejlesztő: [pphome2](https:/github.com/pphome2)
 
 **Aktuális verzió: 2020.**
-**Első megjelenés: 2018.**
+
+**Első megjelenés: 2019.**
 
 
-A programmal dokumentumokat lehet feltölteni a weboldal mellé, ezek megjeleníthető, letölthetők.
+A program felhasználóhoz kötött kategorizált jegyzeteket tárol.
 
 
 Egyszerű:
 - nem szükséges CMS a működéshez
-- nincs külön felhasználókezelés, két felasználó jelszót tárol a `config` fájlban
+- felhasználókezelés, felasználónevet és jelszót tárol a `config` fájlban
 - nem kell telepíteni
 - nem használ SQL adatbázist
 - használhat cookie-kat
@@ -22,16 +23,16 @@ Egyszerű:
 
 - felmásolni az összes fájlt a webserver megfelelő könyvtárába
 - `config` könyvtár `config.php` fájlátnézése, a beállítások itt taláhatók
-- írási jog kell a `config.php` fájlban megadott dokumentum tároló könyvtárra
+- írási jog kell a `config.php` fájlban megadott jegyzet tároló könyvtárra
 - `config` könyvtárban találhatók a nyelvi fájlok, ha szükséges a módosítható
 
 
 ### Működés
 
-Az adatok a `config.php` könyvtárban megadott dokumentum könyvtárban tárolódnak,
-külön alkönyvtárakban. Ezeket szekcióknak nevezzük.
+Az adatok a `config.php` könyvtárban megadott jehyzet könyvtárban tárolódnak,
+külön alkönyvtárakban, felhasználóként. Ezalatt jönnek létre a kategóriák
+könyvtárként, ahol a jegyzetek tárolódnak.
 
 Indítás:
-- felhasználó: `index.html`
-- adminisztráció: `admin.html`
+- felhasználó bejelentkezés: `index.html``
 
