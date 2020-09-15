@@ -14,50 +14,116 @@
 function login(){
 	global $MA_LOGGEDIN,$MA_LOGIN_TIME,$MA_PASSWORD,$MA_ENABLE_COOKIES,$MA_COOKIE_PASSWORD,
 			$MA_USER_PASS,$MA_ADMIN_PASS,$MA_ADMIN_USER,$MA_LOGIN_TIME,$MA_LOGIN_TIMEOUT,
-			$MA_COOKIE_TIME;
+			$MA_COOKIE_TIME,$MA_ENABLE_MULTIUSER,$MA_USERS_CRED,$MA_USER,$MA_USERS_ADMINUSER,
+			$MA_COOKIE_USER;
 	
 	$MA_LOGGEDIN=false;
 	$MA_LOGIN_TIME=time();
 	$MA_PASSWORD="";
+	$MA_USER="";
 
-	if ($MA_ENABLE_COOKIES){
-		$MA_PASSWORD=$_COOKIE[$MA_COOKIE_PASSWORD];
-		if (($MA_PASSWORD==$MA_USER_PASS)or($MA_PASSWORD==$MA_ADMIN_PASS)){
-			$MA_LOGGEDIN=true;
-		}
-		if ($MA_PASSWORD==$MA_ADMIN_PASS){
-			$MA_ADMIN_USER=true;
-		}
-	}
-	if ($MA_PASSWORD==""){
-		if (isset($_POST["$MA_COOKIE_PASSWORD"])){
-			$MA_PASSWORD=$_POST["$MA_COOKIE_PASSWORD"];
-			$MA_PASSWORD=vinput($MA_PASSWORD);
-			if ((md5($MA_PASSWORD)==$MA_USER_PASS)or(md5($MA_PASSWORD)==$MA_ADMIN_PASS)){
-				$MA_PASSWORD=md5($MA_PASSWORD);
-			}
-			if (($MA_PASSWORD==$MA_USER_PASS)or($MA_PASSWORD==$MA_ADMIN_PASS)){
-				if (isset($_POST["$MA_COOKIE_TIME"])){
-					$outime=$_POST["$MA_COOKIE_TIME"];
-					$outime=vinput($outime);
-					$utime2=$MA_LOGIN_TIME-$outime;
-					if ($utime2<$MA_LOGIN_TIMEOUT){
-						$MA_LOGGEDIN=true;
-					}
-				}else{
+	# multiuser support
+	if ($MA_ENABLE_MULTIUSER){
+		$db=count($MA_USERS_CRED);
+		# multiuser - cookie
+		if ($MA_ENABLE_COOKIES){
+			$MA_PASSWORD=$_COOKIE[$MA_COOKIE_PASSWORD];
+			$MA_USER=$_COOKIE[$MA_COOKIE_USER];
+			for ($i=0;$i<$db;$i++){
+				if (($MA_USER==$MA_USERS_CRED[$i][0])and($MA_PASSWORD==$MA_USERS_CRED[$i][1])){
 					$MA_LOGGEDIN=true;
 				}
-				if ($MA_PASSWORD==$MA_ADMIN_PASS){
-					$MA_ADMIN_USER=true;
+			}
+			if ($MA_USER==$MA_USERS_ADMINUSER){
+				$MA_ADMIN_USER=true;
+			}
+		}
+		# multiuser - no cookie
+		if (!$MA_LOGGEDIN){
+			if ((isset($_POST["$MA_COOKIE_PASSWORD"]))and(isset($_POST["$MA_COOKIE_USER"]))){
+				$MA_PASSWORD=$_POST["$MA_COOKIE_PASSWORD"];
+				$MA_USER=$_POST["$MA_COOKIE_USER"];
+				$MA_PASSWORD=vinput($MA_PASSWORD);
+				$MA_USER=vinput($MA_USER);
+
+				if (strlen($MA_PASSWORD)<30){
+					$MA_PASSWORD=md5($MA_PASSWORD);
+				}
+
+				for ($i=0;$i<$db;$i++){
+					if (($MA_USER==$MA_USERS_CRED[$i][0])and($MA_PASSWORD==$MA_USERS_CRED[$i][1])){
+						$MA_LOGGEDIN=true;
+					}
+				}
+				
+				if ($MA_LOGGEDIN){
+					if (isset($_POST["$MA_COOKIE_TIME"])){
+						$outime=$_POST["$MA_COOKIE_TIME"];
+						$outime=vinput($outime);
+						$utime2=$MA_LOGIN_TIME-$outime;
+						if ($utime2<$MA_LOGIN_TIMEOUT){
+							$MA_LOGGEDIN=true;
+						}else{
+							$MA_LOGGEDIN=false;
+						}
+					}
+					if ($MA_USER==$MA_USERS_ADMINUSER){
+						$MA_ADMIN_USER=true;
+					}
 				}
 			}
 		}
-	}
-	if (($MA_ENABLE_COOKIES)and($MA_LOGGEDIN)){
-		setcookie($MA_COOKIE_PASSWORD, $MA_PASSWORD, time()+$MA_LOGIN_TIMEOUT); 
-	}
-	if (!$MA_LOGGEDIN){
-		setcookie($MA_COOKIE_PASSWORD, "", time() - 3600);
+		# multiuser - cookie
+		if (($MA_ENABLE_COOKIES)and($MA_LOGGEDIN)){
+			setcookie($MA_COOKIE_PASSWORD, $MA_PASSWORD, time()+$MA_LOGIN_TIMEOUT); 
+			setcookie($MA_COOKIE_USER, $MA_USER, time()+$MA_LOGIN_TIMEOUT); 
+		}
+		if (($MA_ENABLE_COOKIES)and(!$MA_LOGGEDIN)){
+			setcookie($MA_COOKIE_PASSWORD, "", time() - 3600);
+			setcookie($MA_COOKIE_USER, "", time() - 3600);
+		}
+	}else{
+
+		# no multiuser
+		if ($MA_ENABLE_COOKIES){
+			$MA_PASSWORD=$_COOKIE[$MA_COOKIE_PASSWORD];
+			if (($MA_PASSWORD==$MA_USER_PASS)or($MA_PASSWORD==$MA_ADMIN_PASS)){
+				$MA_LOGGEDIN=true;
+			}
+			if ($MA_PASSWORD==$MA_ADMIN_PASS){
+				$MA_ADMIN_USER=true;
+			}
+		}
+		if (!$MA_LOGGEDIN){
+			if (isset($_POST["$MA_COOKIE_PASSWORD"])){
+				$MA_PASSWORD=$_POST["$MA_COOKIE_PASSWORD"];
+				$MA_PASSWORD=vinput($MA_PASSWORD);
+				if ((md5($MA_PASSWORD)==$MA_USER_PASS)or(md5($MA_PASSWORD)==$MA_ADMIN_PASS)){
+					$MA_PASSWORD=md5($MA_PASSWORD);
+				}
+				if (($MA_PASSWORD==$MA_USER_PASS)or($MA_PASSWORD==$MA_ADMIN_PASS)){
+					if (isset($_POST["$MA_COOKIE_TIME"])){
+						$outime=$_POST["$MA_COOKIE_TIME"];
+						$outime=vinput($outime);
+						$utime2=$MA_LOGIN_TIME-$outime;
+						if ($utime2<$MA_LOGIN_TIMEOUT){
+							$MA_LOGGEDIN=true;
+						}
+					}else{
+						$MA_LOGGEDIN=true;
+					}
+					if ($MA_PASSWORD==$MA_ADMIN_PASS){
+						$MA_ADMIN_USER=true;
+					}
+				}
+			}
+		}
+		if (($MA_ENABLE_COOKIES)and($MA_LOGGEDIN)){
+			setcookie($MA_COOKIE_PASSWORD, $MA_PASSWORD, time()+$MA_LOGIN_TIMEOUT); 
+		}
+		if (($MA_ENABLE_COOKIES)and(!$MA_LOGGEDIN)){
+			setcookie($MA_COOKIE_PASSWORD, "", time() - 3600);
+		}
 	}
 }
 
@@ -114,6 +180,15 @@ function page_footer(){
 	if (file_exists("$MA_FOOTER")){
 		include("$MA_FOOTER");
 	}
+}
+
+
+# check valid md5 string
+function checkmd5($md5=''){
+	if(empty($md5)){
+		return false;
+	}
+	return preg_match('/^[a-f0-9]{32}$/', $md5);
 }
 
 
