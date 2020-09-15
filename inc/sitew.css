@@ -1,0 +1,467 @@
+
+body {
+	margin:0px;
+	font-size:16px;
+}
+
+a {
+	text-decoration:none;
+}
+
+
+.all-page {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+
+.content {
+	margin:20px;
+	padding:20px;
+	flex: 1 0 auto;
+}
+
+.insidecontent {
+	padding:20px;
+}
+
+.menu {
+	margin:0;
+	padding:0;
+}
+
+footer {
+	margin: 0;
+	padding: 0;
+	background-color: #333;
+	display: block;
+	color: white;
+	padding-left: 20px;
+	cursor:default;
+}
+
+p a{
+	display: inline-block;
+	color: black;
+	text-align: center;
+	padding-left: 14px;
+	text-decoration: none;
+}
+
+.padleft {
+	padding-left:20px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a, .dropbtn{
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+	background-color: red;
+}
+
+.liright {
+	float:right;
+	padding:0px;
+}
+
+
+@media screen (max-width: 2900px) {
+	ul.sidenav {
+		width: 100%;
+		height: auto;
+		position: relative;
+	}
+	ul.sidenav li a {
+		float: left;
+		padding: 15px;
+	}
+	div.content {
+		margin-left: 0;
+	}
+}
+
+li:last-child {
+	border-right: none;
+}
+
+
+@media screen (max-width: 400px) {
+	ul.sidenav li a {
+		text-align: center;
+		float: none;
+	}
+}
+
+.message {
+	position:relative;
+	display:block;
+	padding:10px;
+	background-color:red;
+	color:white;
+	cursor:default;
+}
+
+.message_error {
+	position:relative;
+	display:block;
+	padding:0px;
+	background-color:red;
+	color:white;
+	cursor:default;
+	border: 0px solid;
+	border-radius:10px;
+}
+
+.message_ok {
+	position:relative;
+	display:block;
+	padding:0px;
+	background-color:lightgreen;
+	color:black;
+	cursor:default;
+	border: 0px solid;
+	border-radius:10px;
+}
+
+
+
+.topright, .toprightclose {
+	text-decoration:none;
+	position:absolute;
+	right:5px;
+	top:5px;
+	padding:10px;
+	font-size:1em;
+	color:white;
+}
+
+.toprightclose:after {
+	content:"\274C";
+}
+
+.topleftmenu1:before {
+	content:"\2630";
+	padding-right:10px;
+	padding-left:10px;
+	text-decoration:bold;
+	font-size:1.2em;
+}
+
+
+.center {
+	text-align:center !important;
+}
+
+.container {
+	position:relative;
+	display:block;
+	cursor:default;
+	clear:both;
+}
+.card, .containerbox {
+	position:relative;
+	display:block;
+	cursor:default;
+	clear:both;
+	margin-top:20px;
+	margin-bottom:20px;
+	box-shadow:0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+.card-header {
+	padding:10px 10px 10px 10px;
+	background-color:#2196F3;
+	color:white;
+	font-size:1.3em;
+	cursor: default;
+	border-radius: 5px;
+}
+
+.card-header-tab {
+	background-color:#2196F3;
+	color:white;
+	font-size:1.2em;
+	padding:0px;
+}
+
+.card-footer {
+	padding:10px;
+	background-color:#2196F3;
+	color:white;
+}
+
+.card-footer2 {
+	padding:10px;
+	text-align:right;
+	background-color:#2196F3;
+	color:white;
+}
+
+.card-body {
+	padding:10px;
+	border-radius: 5px;
+}
+
+.card p h2 {
+	padding:10px;
+}
+
+.card form {
+	padding:20px;
+}
+
+.search_icon{
+	cursor: pointer;
+	transform:rotate(90deg);
+}
+
+.search_icon:hover{
+	background-color:red;
+}
+
+
+.mt-table,.mt-table-all {
+	border-spacing:0;
+	width:100%;
+	display:table
+}
+
+.mt-table-all {
+	border:1px solid #ccc;
+	border-radius: 5px;
+}
+
+.mt-bordered tr,.mt-table-all tr {
+	border-bottom:1px solid #ddd;
+}
+
+.mt-striped tbody tr:nth-child(even) {
+	color:black;
+	background-color:#f1f1f1;
+}
+
+.mt-table-all tr:nth-child(odd) {
+	color:black;
+	background-color:lightgrey;
+}
+
+.mt-table-all tr:nth-child(even) {
+	color:black;
+	background-color:lightyellow;
+}
+
+.mt-hoverable tbody tr:hover,.mt-ul.mt-hoverable li:hover {
+	background-color:#ccc;
+}
+
+.mt-centered tr th,.mt-centered tr td {
+	text-align:center;
+}
+
+.mt-table td,.mt-table th,.mt-table-all td,.mt-table-all th {
+	padding:8px 8px;
+	display:table-cell;
+	text-align:left;
+	vertical-align:middle;
+}
+
+.mt-table th:first-child,.mt-table td:first-child,.mt-table-all th:first-child,.mt-table-all td:first-child {
+	padding-left:16px;
+}
+
+.mt-red,.mt-hover-red:hover {
+	color:#fff!important;
+	background-color:#f44336!important;
+}
+
+input[type=text], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=password], select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
+#inputlabel {
+	width: 20%;
+	border: 1px solid;
+}
+
+
+img {
+	cursor: pointer;
+	width:100%;
+}
+
+.imgblock {
+	display:block;
+}
+
+.imgnone {
+	display:none;
+}
+
+.spaceline {
+	padding-top:25px;
+}
+
+.spaceline50 {
+	padding-top:50px;
+}
+
+.spaceline100 {
+	padding-top:100px;
+}
+
+.privacybutton {
+	color: white;
+	border-radius: 4px;
+	border: none;
+	text-decoration: none;
+	background-color: #4CAF50;
+	padding: 5px 25px 5px 25px;
+	font-size:0.9em;
+	cursor: pointer;
+}
+
+
+
+/* local app css */
+
+
+
+.inputsubmit5{
+	width:5% !important;
+}
+
+.inputsubmit40{
+	width:30% !important;
+}
+
+.inputsubmit40r{
+	width:30% !important;
+	background-color: red !important;
+}
+
+.inputsubmitr{
+	background-color: red !important;
+}
+
+.inputsubmitg{
+	background-color: grey !important;
+}
+
+.row {
+	width: 100%;
+	position:relative;
+	display:block;
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+@media (max-width:600px) {
+	.column {
+		width: 100%;
+	}
+}
+
+.column5 {
+	float: left;
+	width: 20%;
+	padding: 0px;
+	text-align:center;
+}
+
+.column54 {
+	float: left;
+	width: 80%;
+	padding: 0px;
+}
+
+.column3 {
+	float: left;
+	width: 33.3%;
+	padding: 0px;
+}
+
+.column32 {
+	float: left;
+	width: 66.6%;
+	padding: 0px;
+}
+
+.column2 {
+	float: left;
+	width: 50%;
+	padding: 0px;
+}
+
+.column1 {
+	margin: auto;
+	width: 50%;
+	padding: 0px;
+}
+
+.columnspace {
+	padding: 5px;
+}
+
+.content2 {
+	margin:auto;
+	width:90%;
+	padding:20px;
+	border: 1px solid;
+	border-color:lightgray;
+}
+
