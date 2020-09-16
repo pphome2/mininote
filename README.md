@@ -34,5 +34,5 @@ külön alkönyvtárakban, felhasználóként. Ezalatt jönnek létre a kategór
 könyvtárként, ahol a jegyzetek tárolódnak.
 
 Indítás:
-- felhasználó bejelentkezés: `index.html``
+- felhasználó bejelentkezés: `index.html`
 
