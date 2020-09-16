@@ -14,7 +14,7 @@
 function login(){
 	global $MA_LOGGEDIN,$MA_LOGIN_TIME,$MA_PASSWORD,$MA_ENABLE_COOKIES,$MA_COOKIE_PASSWORD,
 			$MA_USER_PASS,$MA_ADMIN_PASS,$MA_ADMIN_USER,$MA_LOGIN_TIME,$MA_LOGIN_TIMEOUT,
-			$MA_COOKIE_TIME,$MA_ENABLE_MULTIUSER,$MA_USERS_CRED,$MA_USER,$MA_USERS_ADMINUSER,
+			$MA_COOKIE_TIME,$MA_ENABLE_MULTIUSER,$MA_USERS_CRED,$MA_USER,$MA_USERS_ADMINUSERS,
 			$MA_COOKIE_USER;
 	
 	$MA_LOGGEDIN=false;
@@ -34,7 +34,7 @@ function login(){
 					$MA_LOGGEDIN=true;
 				}
 			}
-			if ($MA_USER==$MA_USERS_ADMINUSER){
+			if (in_array($MA_USER,$MA_USERS_ADMINUSERS)){
 				$MA_ADMIN_USER=true;
 			}
 		}
@@ -67,7 +67,7 @@ function login(){
 							$MA_LOGGEDIN=false;
 						}
 					}
-					if ($MA_USER==$MA_USERS_ADMINUSER){
+					if (in_array($MA_USER,$MA_USERS_ADMINUSERS)){
 						$MA_ADMIN_USER=true;
 					}
 				}

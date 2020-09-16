@@ -77,7 +77,9 @@ $MA_USERPAGE=false;
 
 # multiuser
 $MA_ENABLE_MULTIUSER=true;
-$MA_USERS_ADMINUSER="admin";
+$MA_USERS_ADMINUSERS=array(
+				"admin"
+			);
 $MA_USERS_CRED=array(
 					array("admin","e3274be5c857fb42ab72d786e281b4b8"),
 					array("user","5f4dcc3b5aa765d61d8327deb882cf99"),

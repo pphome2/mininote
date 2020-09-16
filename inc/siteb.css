@@ -53,6 +53,12 @@ p a{
 	padding-left:20px;
 }
 
+.cookietext {
+	padding-left: 20px;
+	font-size: 0.8em;
+	text-align: center;
+}
+
 ul {
 	list-style-type: none;
 	margin: 0;
