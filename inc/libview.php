@@ -56,12 +56,12 @@ function mess_ok($m){
 
 # login box
 function login_form(){
-	global $MA_COOKIE_STYLE,$MA_STYLEINDEX,$L_PASSWORD,$MA_COOKIE_PASSWORD,$L_BUTTON_NEXT,$MA_ENABLE_MULTIUSER,
+	global $MA_COOKIE_STYLE,$MA_STYLEINDEX,$L_PASSWORD,$MA_COOKIE_PASSWORD,$L_BUTTON_NEXT,$MA_ENABLE_USERNAME,
 			$MA_USERS,$L_USERNAME,$L_PASS,$MA_COOKIE_USER;
 	
 	echo("<div class=spaceline100></div>");
 	echo("<form  method='post' enctype='multipart/form-data'>");
-	if ($MA_ENABLE_MULTIUSER){
+	if ($MA_ENABLE_USERNAME){
 		echo("	<input type='text' name='$MA_COOKIE_USER' id='$MA_COOKIE_USER' placeholder='$L_USERNAME' autofocus>");
 		echo("	<input type='password' name='$MA_COOKIE_PASSWORD' id='$MA_COOKIE_PASSWORD' placeholder='$L_PASSWORD'>");	
 	}else{

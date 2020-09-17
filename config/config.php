@@ -12,9 +12,6 @@
 # copyright link
 $MA_COPYRIGHT="© ".date("Y").". <a href=https://github.com/pphome2>Github</a>";
 
-# need md5 passcode -- user password: password - admin password: adminpassword
-$MA_ADMIN_PASS="e3274be5c857fb42ab72d786e281b4b8";
-$MA_USER_PASS="5f4dcc3b5aa765d61d8327deb882cf99";
 
 # title, home link
 $MA_SITENAME="MiniNote - Jegyzetelő";
@@ -76,7 +73,7 @@ $MA_ADMIN_USER=false;
 $MA_USERPAGE=false;
 
 # multiuser
-$MA_ENABLE_MULTIUSER=true;
+$MA_ENABLE_USERNAME=true;
 $MA_USERS_ADMINUSERS=array(
 				"admin"
 			);
@@ -84,10 +81,15 @@ $MA_USERS_CRED=array(
 					array("admin","e3274be5c857fb42ab72d786e281b4b8"),
 					array("user","5f4dcc3b5aa765d61d8327deb882cf99"),
 				);
+# need md5 passcode -- user password: password - admin password: adminpassword
 
 # menu
 $MA_MENU_FIELD="m";
 $MA_MENU=array();
+
+# adminmenu
+$MA_ADMINMENU_FIELD="m";
+$MA_ADMINMENU=array();
 
 # load language file
 if (file_exists("$MA_CONFIG_DIR/$MA_LANGFILE")){
